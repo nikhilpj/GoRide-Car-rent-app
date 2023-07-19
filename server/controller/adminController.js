@@ -18,7 +18,7 @@ module.exports = {
 
     getUsers:(req,res)=>{
         userHelper.getAllUsers().then((data)=>{
-            console.log("data is ",data)
+            
             return res.json({userData:data})
         }).catch((e)=>{
             console.log("error in getusers",e)

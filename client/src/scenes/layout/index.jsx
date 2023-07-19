@@ -12,7 +12,7 @@ const Layout = ()=>{
     return (
     <>
     <Navbar/>
-    <Box height={20}/>
+    <Box height={40}/>
     <Box height={30}>
         
         <Box sx={{display:"flex"}}>

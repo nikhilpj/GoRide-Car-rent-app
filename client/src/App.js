@@ -1,7 +1,7 @@
 import Login from './pages/Login'
 import Signup from './pages/Signup';
 import AdminLogin from './pages/AdminLogin';
-import CarManage from './pages/CarManagement';
+import CarManage from './pages/Cars';
 import StoreManage from './pages/StoreManagement';
 import UserManage from './pages/UserManagement';
 import './App.css';
