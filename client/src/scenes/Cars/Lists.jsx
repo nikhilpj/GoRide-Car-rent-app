@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Card,Stack,CardContent } from '@mui/material';
+import Create from './Create';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,8 +48,8 @@ export default function Lists() {
   };
 
   return (
-    <Card >
-        <CardContent >
+    // <Card >
+    //     <CardContent >
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
@@ -61,13 +62,13 @@ export default function Lists() {
         Item One
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <Create/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
       </CustomTabPanel>
     </Box>
-    </CardContent>
-    </Card>
+    // </CardContent>
+    // </Card>
   );
 }

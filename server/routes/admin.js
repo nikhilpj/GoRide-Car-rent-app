@@ -8,5 +8,9 @@ router.post('/login',adminController.postLogin)
 
 router.get('/user-management',adminController.getUsers)
 
+router.post('/createCar',adminController.postCar)
+
+
+
 
 module.exports = router

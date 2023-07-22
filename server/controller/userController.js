@@ -1,3 +1,4 @@
+const carHelper = require('../helpers/carHelper')
 const userHelper= require('../helpers/userHelper')
 
 
@@ -17,6 +18,15 @@ module.exports={
 
        })
        
+    },
+
+    getProducts:(req,res)=>{
+        carHelper.getAllDetails().then((data)=>{
+            
+            return res.json({ProductData:data})
+        }).catch((e)=>{
+            console.log("eror in fetching data of products",e)
+        })
     }
    
 }

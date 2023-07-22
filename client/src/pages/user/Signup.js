@@ -9,6 +9,8 @@ import {
 import React, { useState} from "react";
 import {  useNavigate} from 'react-router-dom'
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 const Signup = () => {
@@ -21,6 +23,7 @@ const Signup = () => {
 
   const handleSubmit= async(e)=>{
     console.log("handle submit function working")
+    
     
     e.preventDefault()
         const response =await axios({
@@ -39,7 +42,9 @@ const Signup = () => {
        console.log(req.status)
        if(req.status===200)
        {
-        alert('signup successfull')
+        toast.success('user succesfuly created',{
+          position:'top-center'
+        })
         navigate('/api/user/login')
        }
     }).catch((e)=>{
@@ -131,6 +136,7 @@ const Signup = () => {
           Have an account?
           <Link href="#">Login</Link>
         </Typography>
+        <ToastContainer/>
       </Paper>
     </Grid>
   );

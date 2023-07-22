@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import {  useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -39,7 +41,9 @@ const Login = () => {
         console.log(req)
         if(req.status===200)
         {
-          alert('login successfull')
+          toast.success('login success',{
+            position:'top-center'
+          })
           navigate('/api/user/home')
         }
       })
@@ -93,6 +97,7 @@ const Login = () => {
           Do not have an account?
           <Link href="#">Sign Up</Link>
         </Typography>
+        <ToastContainer/>
       </Paper>
     </Grid>
   );

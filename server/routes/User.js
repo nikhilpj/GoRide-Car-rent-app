@@ -7,4 +7,6 @@ router.post('/signup',userController.postSignup)
 
 router.post('/login',userController.postLogin)
 
+router.get('/getProdctDetails',userController.getProducts)
+
 module.exports = router

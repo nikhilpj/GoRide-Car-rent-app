@@ -1,5 +1,6 @@
 const adminHelper = require('../helpers/adminHelper')
 const userHelper = require('../helpers/userHelper')
+const carHelper = require('../helpers/carHelper')
 const adminEmail = 'admin@gmail.com'
 const adminPassword ='admin'
 
@@ -23,6 +24,19 @@ module.exports = {
         }).catch((e)=>{
             console.log("error in getusers",e)
         })
+
+    },
+
+
+
+    postCar:(req,res)=>{
+        carHelper.createCar(req.body).then(()=>{
+            console.log("after inserting car data in collection")
+            res.status(200).json({message:"data inserted succesfully"})
+        }).catch((e)=>{
+            res.status(500).json({error:'internal server error'})
+        })
+        
 
     }
 }

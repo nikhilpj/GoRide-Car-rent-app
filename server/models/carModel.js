@@ -26,8 +26,14 @@ const carSchema = new schema({
     Rate:{
         type:String,
         required:true
+    },
+    image:{
+        type:Object,
+        required:true
     }
 
+},{
+    timestamps:true
 })
 
 const Cars = mongoose.model('Cars',carSchema)
