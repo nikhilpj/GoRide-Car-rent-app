@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Card,Stack,CardContent } from '@mui/material';
 import Create from './Create';
+import Management from './Management';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,7 +60,7 @@ export default function Lists() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+        <Management/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <Create/>

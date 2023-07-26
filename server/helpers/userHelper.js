@@ -1,5 +1,8 @@
 const userCollection = require('../models/userModel')
 const bcrypt = require('bcrypt')
+const { response } = require('express')
+const jwt = require('jsonwebtoken')
+require("dotenv").config()
 
 module.exports={
 
@@ -31,7 +34,22 @@ module.exports={
                 bcrypt.compare(userData.password,user.password).then((result)=>{
                     if(result)
                     {
-                        resolve()
+                        const accesstoken = jwt.sign({"userInfo":{
+                            "email":userData.email
+                        }},
+                        process.env.ACCESS_TOKEN_SECRET,{
+                            expiresIn:'10s'
+                        })
+
+                        const refreshtoken = jwt.sign({"userInfo":{
+                            "email":userData.email
+                        }},
+                        process.env.REFRESH_TOKEN_SECRET,{
+                            expiresIn:'1d'
+                        })
+
+                       let data={accesstoken,refreshtoken}
+                        resolve(data)
                     }
                 })
             }

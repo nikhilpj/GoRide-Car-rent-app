@@ -53,5 +53,14 @@ getAllDetails:()=>{
     let products = await carCollection.find({})
     resolve(products)
   })
+},
+
+getAllCars:()=>{
+  return new Promise(async(resolve,reject)=>{
+      let cars =await carCollection.find({})
+      console.log(cars)
+      resolve(cars)
+    
+  })
 }
 };

@@ -10,6 +10,8 @@ router.get('/user-management',adminController.getUsers)
 
 router.post('/createCar',adminController.postCar)
 
+router.get('/carManagement',adminController.getCars)
+
 
 
 

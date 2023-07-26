@@ -27,6 +27,14 @@ module.exports = {
 
     },
 
+    getCars:(req,res)=>{
+        carHelper.getAllCars().then((data)=>{
+            return res.json({carData:data})
+        }).catch((e)=>{
+            console.log('error in car management',e)
+        })
+    },
+
 
 
     postCar:(req,res)=>{
