@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import {
   Button,
@@ -11,9 +11,13 @@ import {
 import {  useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+ 
+
+  
 
 
 const Login = () => {
+ 
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +28,8 @@ const Login = () => {
     margin: "60px auto",
   };
   const btnStyle = { margin: "8px 0" };
+
+ 
 
  async function handleLogin(e) {
     e.preventDefault();
@@ -38,7 +44,9 @@ const Login = () => {
       },
     })
       .then((req,res) => {
-        console.log(req)
+        console.log("token data",req.data.data.accesstoken)
+       
+        
         if(req.status===200)
         {
           toast.success('login success',{

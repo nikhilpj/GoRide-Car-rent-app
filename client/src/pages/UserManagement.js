@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
+import {  useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 const UserManage = () => {
+  const navigate = useNavigate()
   const [usersData,setUsersData] = useState([])
+  
 
 
   useEffect(()=>{
+    
 
     async function getUsers() {
     
@@ -17,12 +24,19 @@ const UserManage = () => {
       })
         .then((req, res) => {
          
+          
           setUsersData(req.data.userData)
+         
           
           
         })
         .catch((e) => {
-          console.log("error while getting user data is", e);
+          if(  e?.response?.status === 401)
+          {
+            alert('you are not authorized')
+            navigate('/api/admin/login')
+          }
+          console.log("error in user management is",e)
         });
       
     }

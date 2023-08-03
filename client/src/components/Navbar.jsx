@@ -15,6 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import AdminLogout from '../pages/AdminLogout';
 
 
 const AppBar = styled(MuiAppBar, {
@@ -132,6 +133,7 @@ export default function Navbar() {
           <Badge badgeContent={4} color="error">
             <MailIcon />
           </Badge>
+          
         </IconButton>
         <p>Messages</p>
       </MenuItem>
@@ -159,6 +161,7 @@ export default function Navbar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      
     </Menu>
   );
 
@@ -208,6 +211,9 @@ export default function Navbar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            <IconButton>
+              <AdminLogout/>
+            </IconButton>
             <IconButton
               size="large"
               edge="end"
@@ -230,7 +236,9 @@ export default function Navbar() {
               color="inherit"
             >
               <MoreIcon />
+              
             </IconButton>
+            
           </Box>
         </Toolbar>
       </AppBar>
