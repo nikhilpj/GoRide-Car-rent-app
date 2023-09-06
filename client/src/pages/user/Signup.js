@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../axios/instance";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './Signup.css'
@@ -112,7 +112,7 @@ const Signup = () => {
     }
     const response = await axios({
       method: "post",
-      url: `http://localhost:5000/api/user/signup`,
+      url: `/api/user/signup`,
       data: {
         firstname: firstname,
         lastName: lastName,

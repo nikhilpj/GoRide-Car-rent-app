@@ -12,9 +12,13 @@ router.get('/user-management',verifyJwt,adminController.getUsers)
 
 router.post('/createCar',adminController.postCar)
 
-router.get('/carManagement',adminController.getCars)
+router.get('/carManagement',verifyJwt,adminController.getCars)
 
 router.post('/logout',adminController.adminLogout)
+
+router.patch('/user-management/:userId',adminController.editUser)
+
+router.post('/createLocation',adminController.postLocation)
 
 
 

@@ -5,7 +5,7 @@ import axios from "../../axios/instance";
 import AdminContext from "../../context/adminContext";
 
 const Management = () => {
-  const [carData,setCarsData] = useState([])
+  const [locationData,setLocationData] = useState([])
   const {adminToken} = useContext(AdminContext)
 
 
@@ -15,23 +15,15 @@ const Management = () => {
     
       const response = await axios({
         method: "get",
-        url: "/api/admin/carManagement",
+        url: "/api/admin/getStores",
         headers:{
           Authorization:`Bearer ${adminToken}`,
           
         },
         withCredentials:true
       })
-        .then((req, res) => {
-          console.log(req)
-         console.log("car data",req.data.carData)
-          setCarsData(req.data.carData)
-          
-          
-        })
-        .catch((e) => {
-          console.log("error while getting user data is", e);
-        });
+       
+       
       
     }
 
@@ -45,14 +37,12 @@ const Management = () => {
 
   const columns = [
     { field: "_id", headerName: "_id",width:'250' },
-    { field: "model", headerName: "model",width:'100' },
-    { field: "brand", headerName: "brand",width:'100' },
-    { field: "fuelType", headerName: "fuelType" ,width:'170'},
-    { field: "Rate", headerName: "rate" ,width:'130'},
+    { field: "location", headerName: "location",width:'100' },
+    
   ];
 
   // const rows = carData.map((items)=>{return items})
-  const rows = carData ? carData.map((items) => items) : [];
+  const rows = locationData ? locationData.map((items) => items) : [];
 
   return (
     <Box>
@@ -61,7 +51,7 @@ const Management = () => {
         component="h5"
         sx={{ textAlign: "center", mt: 3, mb: 3 }}
       >
-        Car management
+        Store management
       </Typography>
       <DataGrid
         columns={columns}

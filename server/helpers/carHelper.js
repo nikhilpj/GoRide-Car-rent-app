@@ -1,4 +1,5 @@
 const carCollection = require("../models/carModel");
+const locationCollection = require("../models/locationModel");
 const cloudinaryModule = require("cloudinary");
 require("dotenv").config();
 
@@ -12,7 +13,7 @@ cloudinary.config({
 
 module.exports = {
   createCar: (carData) => {
-    const { model, brand, fueltype, seatCapacity, transmission, rate, image } =
+    const { model, brand, fueltype, seatCapacity, transmission, rate,location, image } =
       carData;
 
     return new Promise(async (resolve, reject) => {
@@ -20,6 +21,8 @@ module.exports = {
             if (image) {
                 const uploadResponse = await cloudinary.uploader.upload(image, {
                   upload_preset: "Goride",
+                  crop:"fill",
+                  gravity:"auto"
                 }); 
 
                 if(uploadResponse)
@@ -31,6 +34,7 @@ module.exports = {
                         SeatingCapacity:seatCapacity,
                         transmissionType:transmission,
                         Rate:rate,
+                        Location:location,
                         image:uploadResponse
                     })
                 }
@@ -62,5 +66,38 @@ getAllCars:()=>{
       resolve(cars)
     
   })
+},
+
+getCarsDetails:async(id)=>{
+
+  try {
+    const details = await locationCollection.findOne({_id:id})
+    console.log("detail of location",details)
+    const locationName = details.locationName
+    console.log("location name is",locationName)
+    const data = await carCollection.find({Location:locationName})
+    console.log("data of cars in location",data)
+    return data
+  } catch (error) {
+    console.log("eror is ",error)
+    throw error
+  }
+ 
+ 
+},
+
+Booking:async(id)=>{
+
+  try
+  {
+    const detail = await carCollection.findOne({_id:id})
+  console.log("details of car is",detail)
+  return detail
+  }catch(e){
+    console.log("error is ",e)
+    throw e
+  }
+  
+
 }
 };

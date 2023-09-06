@@ -1,6 +1,7 @@
 const adminHelper = require("../helpers/adminHelper");
 const userHelper = require("../helpers/userHelper");
 const carHelper = require("../helpers/carHelper");
+const locationHelper = require('../helpers/locationHelper')
 const adminEmail = "admin@gmail.com";
 const adminPassword = "admin";
 const jwt = require("jsonwebtoken");
@@ -21,7 +22,7 @@ module.exports = {
             },
           },
           process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: "10s" }
+          { expiresIn: "5m" }
         );
         console.log(accesstoken);
         const refreshtoken = jwt.sign({"userInfo":
@@ -82,6 +83,23 @@ module.exports = {
       });
   },
 
+  postLocation:async(req,res)=>{
+    try{
+      
+      const response = await locationHelper.createLocation(req.body)
+      console.log(response)
+      res.status(200).json({ message: "Location created successfully" });
+    }
+    catch(e)
+    {
+console.log("error is ",e)
+res.status(500).json({ error: "An error occurred while creating the location" });
+    }
+    
+
+
+  },
+
   adminLogout:(req,res)=>{
     const cookies = req.cookies
     console.log("this is the cookie going to be cleared ",cookies)
@@ -93,5 +111,15 @@ module.exports = {
     }
     res.clearCookie('jwt',{httpOnly:true})
     res.json({message:"cookie cleared"})
+  },
+
+  editUser:(req,res)=>{
+    console.log(req.params.userId)
+    adminHelper.getDetails(req.params.userId).then(()=>{
+      res.json({message:'edited succesfully'})
+    }).catch((e)=>{
+      console.log("error in edit",e)
+    })
+
   }
 };

@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "../axios/instance"
 import React, { useEffect } from "react"
 
 const AdminLogout = ()=>{
@@ -10,7 +10,7 @@ const AdminLogout = ()=>{
 
     const response = await axios({
         method:'post',
-        url:'http://localhost:5000/api/admin/logout'
+        url:'/api/admin/logout'
     }).then((req,res)=>{
         console.log("req object aftr logout",req)
         console.log("response object",res)

@@ -1,11 +1,11 @@
 import React, { useState,useContext,useEffect } from "react";
 import { Button, Grid, Paper, TextField } from "@mui/material";
-import axios from "axios";
+import axios from "../axios/instance";
 import { useNavigate } from "react-router-dom";
 import AdminContext, { AdminProvider } from "../context/adminContext";
 
 const AdminLogin = () => {
-  const {Token,setToken} = useContext(AdminContext)
+  const {adminToken,setAdminToken} = useContext(AdminContext)
     const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,13 +20,13 @@ const AdminLogin = () => {
   const btnStyle = { margin: "8px 0" };
 
   useEffect(() => {
-    console.log("jwt token", Token);
-  }, [Token]);
+    console.log("jwt token", adminToken);
+  }, [adminToken]);
 
   useEffect(() => {
     if (loginSuccess) {
       alert("login success");
-       navigate("/api/admin/dashboard"); 
+       navigate("/admin/dashboard"); 
     }
   }, [loginSuccess]);
 
@@ -34,15 +34,15 @@ async  function handleLogin(e){
     e.preventDefault()
     const response = await axios({
         method:'post',
-        url:'http://localhost:5000/api/admin/login',
+        url:'/api/admin/login',
         data:{
             email:email,
             password:password
         }
     }).then((req,res)=>{
-      setToken(req.data.accesstoken)
+      setAdminToken(req.data.accesstoken)
         console.log("req.data.accesstoken",req.data.accesstoken)
-        console.log(Token)
+        console.log(adminToken)
        
         
         if(req.status===200)

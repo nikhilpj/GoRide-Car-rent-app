@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import axios from "axios";
+import axios from "../../axios/instance";
 import {
   Button,
   Grid,
@@ -29,6 +29,10 @@ const Login = () => {
   };
   const btnStyle = { margin: "8px 0" };
 
+  const handleOtp = ()=>{
+    console.log("handleotp");
+    navigate('/api/user/otp')
+  }
  
 
  async function handleLogin(e) {
@@ -37,7 +41,7 @@ const Login = () => {
 
     const response =await axios({
       method: "post",
-      url: "http://localhost:5000/api/user/login",
+      url: "/api/user/login",
       data: {
         email: email,
         password: password,
@@ -55,7 +59,8 @@ const Login = () => {
           navigate('/api/user/home')
         }
       })
-      .catch((e) => console.log("error aftre login is ", e));
+      .catch((e) =>{ toast.error(e.message)
+      console.log(e.message)});
   }
 
   return (
@@ -97,6 +102,18 @@ const Login = () => {
         >
           Sign In
         </Button>
+        
+        <Button
+          onClick={handleOtp}
+          color="primary"
+          variant="contained"
+          fullWidth
+          style={btnStyle}
+          
+        >
+          Login using OTP
+        </Button>
+        
         </form>
         <Typography>
           <Link href="#">forgot password</Link>

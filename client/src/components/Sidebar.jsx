@@ -111,7 +111,7 @@ export default function Sidebar() {
         <Divider />
         <List>
           
-            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/api/admin/dashboard')} >
+            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/admin/dashboard')} >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -133,7 +133,7 @@ export default function Sidebar() {
             </ListItem>
 
 
-            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/api/admin/user-management')} >
+            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/admin/user-management')} >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -155,7 +155,7 @@ export default function Sidebar() {
             </ListItem>
 
 
-            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/api/admin/car-management')} >
+            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/admin/car-management')} >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -176,7 +176,7 @@ export default function Sidebar() {
               </ListItemButton>
             </ListItem>
 
-            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/api/admin/store-management')} >
+            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>navigate('/admin/store-management')} >
               <ListItemButton
                 sx={{
                   minHeight: 48,

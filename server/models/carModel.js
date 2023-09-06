@@ -27,6 +27,10 @@ const carSchema = new schema({
         type:String,
         required:true
     },
+    Location:{
+        type:String,
+        required:true
+    },
     image:{
         type:Object,
         required:true

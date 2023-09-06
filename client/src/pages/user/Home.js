@@ -3,6 +3,7 @@ import NavBar from "../../components/user/Navbar";
 import Slider from "../../components/user/Slider";
 import Product from "../../components/user/Product";
 import Products from "../../components/user/Products";
+import Locations from "../../components/user/Locations";
 
 const  Home=()=>
 {
@@ -10,7 +11,8 @@ const  Home=()=>
         <div>
             <NavBar/>
             <Slider/>
-            <Products/>
+            {/* <Products/> */}
+            <Locations/>
         </div>
     )
 }

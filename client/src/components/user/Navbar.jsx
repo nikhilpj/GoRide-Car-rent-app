@@ -6,6 +6,9 @@ import Badge from '@mui/material/Badge';
 
 const Container = styled.div`
   height: 60px;
+  background-color:black;
+  color:white;
+  margin-bottom:10px;
 `;
 
 const Wrapper = styled.div`
@@ -29,7 +32,7 @@ const Center = styled.div`
   flex: 1;
   text-align:center;
 `;
-const Language = styled.div`
+const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
 `;
@@ -68,7 +71,8 @@ const NavBar = () => {
         <Center>
           <Logo>Goride</Logo>
         </Center>
-        <Right><MenuItem>Register</MenuItem>
+        <Right><MenuItem>Locations</MenuItem>
+          <MenuItem>Register</MenuItem>
         <MenuItem>SignIn</MenuItem></Right>
         <MenuItem>  <Badge badgeContent={4} color="primary">
         <MailIcon  />

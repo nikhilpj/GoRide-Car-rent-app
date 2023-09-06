@@ -1,6 +1,6 @@
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../../axios/instance";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,6 +11,7 @@ const Create = () => {
   const [seatCapacity, setSeatCapacity] = useState("");
   const [transmission, setTransmission] = useState("");
   const [rate, setRate] = useState("");
+  const [location,setLocation] = useState('')
   const [image, setImage] = useState("");
   const BtnStyle = { margin: "4px 0" };
 
@@ -43,7 +44,7 @@ const Create = () => {
     e.preventDefault()
     const response = await axios({
       method:'post',
-      url:`http://localhost:5000/api/admin/createCar`,
+      url:`/api/admin/createCar`,
       data:{
         model:model,
         brand:brand,
@@ -51,6 +52,7 @@ const Create = () => {
         seatCapacity:seatCapacity,
         transmission:transmission,
         rate:rate,
+        location:location,
         image:image
         
       }
@@ -136,6 +138,15 @@ const Create = () => {
           onChange={(e) => setRate(e.target.value)}
           style={BtnStyle}
           value={rate}
+        />
+        <TextField
+          size="small"
+          label="Location"
+          required
+          fullWidth
+          onChange={(e) => setLocation(e.target.value)}
+          style={BtnStyle}
+          value={location}
         />
         <Button variant="outlined" component="label" fullWidth style={BtnStyle}>
           Image

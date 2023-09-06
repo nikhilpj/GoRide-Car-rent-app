@@ -8,11 +8,13 @@ const verifyJwt = (req,res,next) =>{
         return res.status(401).json({message:"unauthorized"})
     }
 
-    const token = authHeader.split('')[1]
+    const token = authHeader.split(' ')[1]
+    console.log("accesstoken after splitinh",token)
 
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,decoded)=>{
         if(err)
         {
+            console.log("error while verifying token",err.message)
             return res.status(403).json({message:"forbidden"})
         }
         req.user= decoded.userInfo.email
